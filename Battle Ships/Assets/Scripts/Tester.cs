@@ -14,7 +14,7 @@ namespace BattleShips.Architecture {
             repository = new ShipsRepository();
             repository.Initialize();
 
-            interactor = new ShipsInteractor(repository);
+            interactor = new ShipsInteractor();
             interactor.Initialize();
             
         }

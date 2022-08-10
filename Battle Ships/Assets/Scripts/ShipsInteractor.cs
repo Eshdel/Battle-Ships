@@ -5,9 +5,8 @@ namespace BattleShips.Architecture {
     public class ShipsInteractor : Interactor
     {
         private ShipsRepository repository;
-        
-        public ShipsInteractor(ShipsRepository repository) {
-            this.repository = repository;
+    
+        public ShipsInteractor() {
         }
 
         public void AddShip(object sender, string ship) {
