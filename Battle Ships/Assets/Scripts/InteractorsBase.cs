@@ -1,25 +1,19 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using BattleShips.Scenes.Scripts;
 
 namespace BattleShips.Architecture {
     public class InteractorsBase {
 
         private Dictionary<Type,Interactor> interactorsMap;
+        private SceneConfig sceneConfig;
 
-        public InteractorsBase() {
-            this.interactorsMap = new Dictionary<Type, Interactor>();
+        public InteractorsBase(SceneConfig config) {
+            sceneConfig = config;
         }
 
         public void CreateAllInteractos() {
-            CreateInteractor<ShipsInteractor>();
-        }
-
-        private void CreateInteractor<T>() where T : Interactor, new () {
-            var interactor = new T();
-            var type  = typeof(T);
-            interactorsMap[type] = interactor;
+            interactorsMap = sceneConfig.CreateAllInteractors();
         }
 
         public void SendOnCreateToAllInteractors() {
@@ -43,7 +37,7 @@ namespace BattleShips.Architecture {
             }
         }
 
-        private T GetInteractor<T>() where T:Interactor {
+        public T GetInteractor<T>() where T:Interactor {
             var type = typeof(T);
             return (T) interactorsMap[type];
         }
