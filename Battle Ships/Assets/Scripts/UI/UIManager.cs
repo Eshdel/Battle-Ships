@@ -5,8 +5,9 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    
     private static UIManager _singleton;
-
+    
     public static UIManager Singleton {
         get => _singleton;
 
@@ -27,6 +28,9 @@ public class UIManager : MonoBehaviour
         Singleton = this;
     }
 
+    public Navigation mainMenuNavigation;
+    public Navigation gameMenuNavigation;
+    
     [Header("Connect")]
     [SerializeField] private GameObject connectUI;
 
