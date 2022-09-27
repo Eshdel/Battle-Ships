@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Navigation : MonoBehaviour
 {
@@ -9,7 +11,11 @@ public class Navigation : MonoBehaviour
    private Stack<Fragment> _stack;
 
    [SerializeField] private GameObject _backButton;
+   
    [SerializeField] private Fragment _firstFragment;
+
+   [SerializeField] private Text _fragmentName;
+
    public void Add(Fragment fragment)
    {
       if (_stack.Count > 0) 
@@ -20,6 +26,12 @@ public class Navigation : MonoBehaviour
 
       if (backButtonEnabled && _stack.Count > 1) 
          _backButton.SetActive(true);
+      
+      if (fragment.ShowFragmentName)
+      {
+         _fragmentName.gameObject.SetActive(true);
+         _fragmentName.text = fragment.name;
+      }
    }
 
    public void GoBack()
@@ -29,8 +41,16 @@ public class Navigation : MonoBehaviour
       if (_stack.Count == 1) {
          _backButton.SetActive(false);
       }
-      
+     
+      _fragmentName.gameObject.SetActive(false);
       _stack.Peek().Open();
+    
+      if (_stack.Peek().ShowFragmentName)
+      {
+         _fragmentName.gameObject.SetActive(true);
+         _fragmentName.text = _stack.Peek().name;
+      }
+      
       closedView.Close();
    }
 

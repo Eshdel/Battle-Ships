@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2239883549405894283
+--- !u!1 &6967921516985614913
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1662426805989210591}
-  - component: {fileID: 8531188851012730694}
+  - component: {fileID: 6967921516985614914}
+  - component: {fileID: 6967921516985614915}
+  - component: {fileID: 8528091909631351602}
+  - component: {fileID: 2982395560473843770}
+  - component: {fileID: 2334569586568577388}
+  - component: {fileID: -7624619992552726630}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -17,35 +21,132 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1662426805989210591
-RectTransform:
+--- !u!4 &6967921516985614914
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2239883549405894283}
+  m_GameObject: {fileID: 6967921516985614913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 8.2594795, y: 24.397768, z: 526.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 1}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8531188851012730694
+--- !u!114 &6967921516985614915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2239883549405894283}
+  m_GameObject: {fileID: 6967921516985614913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &8528091909631351602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967921516985614913}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed7b339ba6741144a849fb735e527699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerName:
+    m_InternalValue:
+      utf8LengthInBytes: 0
+      bytes:
+        offset0000:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        byte0016: 0
+        byte0017: 0
+        byte0018: 0
+        byte0019: 0
+        byte0020: 0
+        byte0021: 0
+        byte0022: 0
+        byte0023: 0
+        byte0024: 0
+        byte0025: 0
+        byte0026: 0
+        byte0027: 0
+        byte0028: 0
+        byte0029: 0
+  Fleet: {fileID: 0}
+  Controller: {fileID: 0}
+--- !u!114 &2982395560473843770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967921516985614913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de7b4e24834134429149b5333785802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShipsPrefab:
+  - {fileID: 2574733881855718937, guid: 2614b11e65848e647b52797a04f7dadf, type: 3}
+  - {fileID: 8152556470838294751, guid: febee7f0f3cbac74a9edb5a3dab77854, type: 3}
+  - {fileID: 2924034239847426591, guid: b1e3e80de64b2ab4c941ee8e1859258b, type: 3}
+  - {fileID: 4634453708343988711, guid: 0a76f32eba4d4ef4ea50f1d18c248f34, type: 3}
+  battleField: {fileID: 0}
+--- !u!114 &2334569586568577388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967921516985614913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1405bb73c2d814f86d9e414a6114e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 4.5, y: -4.5}
+  FieldPrefab: {fileID: 3624980834577109554, guid: 78950ddc82abcb843a3dd3e12a3fe6e7, type: 3}
+  DestroyWithSpawner: 0
+--- !u!114 &-7624619992552726630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967921516985614913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7daec818d33635e40a2e809bba746ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsYourTurn:
+    m_InternalValue: 0
+  tryAttackPos:
+    m_InternalValue: {x: 0, y: 0, z: 0}

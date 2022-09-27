@@ -7,8 +7,10 @@ using UnityEngine;
 public abstract class Fragment : MonoBehaviour
 {
    public View [] _views;
-
-   public void Open() 
+   
+   public bool ShowFragmentName = true;
+    
+   public virtual void Open() 
    {
       this.gameObject.SetActive(true);
       foreach (var view in _views)
@@ -17,7 +19,7 @@ public abstract class Fragment : MonoBehaviour
       }
    }
 
-   public void Close()
+   public virtual void Close()
    {
       this.gameObject.SetActive(false);
       foreach (var view in _views)
