@@ -9,6 +9,32 @@ public class PlayerSpawner : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(StartGame());
+    }
+
+    private void PlayerAttackTryAttackPos(Vector3 previousvalue, Vector3 newvalue)
+    {
+        if (NetworkManager.Singleton.IsServer)
+        {
+            var player = FindObjectOfType<Enemy>().GetComponent<Player>();
+            
+            if (player != null);
+            {
+
+                Debug.Log(player.PlayerName+ " Was attack on" + newvalue);
+                //player.Fleet.battleField.AttackArea((int)newvalue.y,(int)newvalue.x);
+            }
+        }
+    }
+    
+    public void GetFirstPlayerTurn()
+    {
+        NetworkManager.Singleton.ConnectedClients.First().Value.PlayerObject.GetComponent<Player>().Controller.IsYourTurn.Value = true;
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    IEnumerator StartGame()
+    {
         if (IsServer)
         {
             foreach (var pair in NetworkManager.Singleton.ConnectedClients  )
@@ -36,37 +62,15 @@ public class PlayerSpawner : NetworkBehaviour
                 
                 player.Fleet.battleField.CreateField(player);
                 Debug.Log("CreateField");
-                // player.Fleet.PlaceFleetOnBattleField();
-                // Debug.Log("PlaceShips");
+                 player.Fleet.PlaceFleetOnBattleField();
+                Debug.Log("PlaceShips");
 
                 player.Controller.tryAttackPos.OnValueChanged += PlayerAttackTryAttackPos;
             }
             
             GetFirstPlayerTurn();
         }
+
+        yield return null;
     }
-
-    private void PlayerAttackTryAttackPos(Vector3 previousvalue, Vector3 newvalue)
-    {
-        if (NetworkManager.Singleton.IsServer)
-        {
-            var player = FindObjectOfType<Enemy>().GetComponent<Player>();
-            
-            if (player != null);
-            {
-
-                Debug.Log(player.PlayerName+ " Was attack on" + newvalue);
-                //player.Fleet.battleField.AttackArea((int)newvalue.y,(int)newvalue.x);
-            }
-        }
-    }
-
-
-    
-    
-    public void GetFirstPlayerTurn()
-    {
-        NetworkManager.Singleton.ConnectedClients.First().Value.PlayerObject.GetComponent<Player>().Controller.IsYourTurn.Value = true;
-    }
-    
 }

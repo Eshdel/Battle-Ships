@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class Fleet : NetworkBehaviour
     {
         foreach (var prefab in ShipsPrefab)
         {
+            prefab.UpdateCount();
             for (int i = 0; i < prefab.Count; i++)
             {
                 Ships.Add(new Ship(prefab.Lenght,prefab.Width,prefab.Lenght * prefab.Width,Vector2.zero));
@@ -32,10 +34,13 @@ public class Fleet : NetworkBehaviour
     {
         foreach (var ship in Ships)
         {
-            while (true)
+            int indRow = 0;
+            int indColumn = 0;
+            
+            while (indRow < battleField.Size || indColumn < battleField.Size)
             {
-                var row = Random.Range(0, (int)battleField.Size - 1);
-                var column = Random.Range(0, (int)battleField.Size - 1);
+                var row = indRow;//Random.Range(0, (int)battleField.Size - 1);
+                var column = indColumn;//Random.Range(0, (int)battleField.Size - 1);
                 Debug.Log($"Try place on {row},{column} Lenght ={ship.Lenght}");
                 if (battleField.PlaceObject(row, column, (int)ship.Lenght, (int)ship.Width))
                 {
@@ -58,7 +63,21 @@ public class Fleet : NetworkBehaviour
                     
                     break;
                 }
-                    
+
+                if (indColumn== battleField.Size -1 && indRow == battleField.Size -1)
+                {
+                    break;
+                }
+                
+                if(indColumn < battleField.Size)
+                    indColumn++;
+                
+                else
+                {
+                    indRow++;
+                    indColumn = 0;
+                }
+               
             }
             
             for(int row = 0; row< battleField.Size;row++)
